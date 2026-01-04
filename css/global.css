@@ -1,0 +1,237 @@
+@font-face {
+  font-family: "BPDotsSquare";
+  src: url("../assets/fonts/BPdotsSquareBold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("../assets/fonts/Poppins-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("../assets/fonts/Poppins-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("../assets/fonts/Poppins-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("../assets/fonts/Poppins-Thin.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("../assets/fonts/Poppins-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("../assets/fonts/Poppins-BoldItalic.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* =========================================
+   GLOBAL STYLES
+========================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 0;
+}
+
+body {
+  font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  line-height: 1.6;
+  color: #ffffff;
+  background: #0a0a0a;
+  overflow-x: hidden;
+  overscroll-behavior: none;
+}
+
+.title-bpdots {
+  font-family: "BPDotsSquare", system-ui, sans-serif;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+:root {
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+  --space-xl: 8rem;
+
+  /* Typography Scale */
+  --font-size-xs: 0.875rem; /* 14px */
+  --font-size-sm: 1rem; /* 16px */
+  --font-size-md: 1.25rem; /* 20px */
+  --font-size-lg: 1.875rem; /* 30px */
+  --font-size-xl: 3.75rem; /* 60px */
+
+  /* Colors (Dark Theme Base) */
+  --color-bg: #0a0a0a;
+  --color-bg-secondary: #1a1a1a;
+  --color-text: #ffffff;
+  --color-text-muted: #b3b3b3;
+  --color-accent: #f55629;
+  --color-card: #ffffff;
+  --color-card-secondary: #121212;
+
+  /* Services Section Specific (Overridable) */
+  --services-title-size: clamp(3rem, 10vw, 8rem);
+  --services-push-distance: clamp(-80px, -10vw, -150px);
+  --services-cards-start: -120vh;
+
+  /* Animation Timing */
+  --ease-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Dark Mode (Future-proof) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #0a0a0a;
+    --color-text: #ffffff;
+  }
+}
+
+/* 3. TYPOGRAPHY */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: var(--space-sm);
+}
+
+h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+}
+h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+h3 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+p {
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--space-sm);
+}
+
+strong {
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+/* 4. LAYOUT UTILITIES */
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.grid {
+  display: grid;
+  gap: var(--space-md);
+}
+
+/* 5. RESPONSIVE BREAKPOINTS (Mobile First) */
+@media (min-width: 768px) {
+  .container {
+    padding: 0 var(--space-lg);
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding: 0 var(--space-xl);
+  }
+}
+
+/* 6. INTERACTION UTILITIES (Hover & Focus) */
+@media (hover: hover) {
+  *:hover {
+    transition: all 0.2s var(--ease-smooth);
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* 7. PRINT STYLES (Bonus Professionalism) */
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+
+  .services-track {
+    height: auto !important;
+  }
+}
+
+.cards-wrapper {
+  transform: translateZ(0);
+}
+
+/* Loading performance */
+img {
+  content-visibility: auto;
+}
+
+/* Scrollbar styling (Webkit only) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-text-muted);
+  border-radius: 4px;
+}

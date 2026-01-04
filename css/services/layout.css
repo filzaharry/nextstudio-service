@@ -1,0 +1,29 @@
+.services-track {
+  position: relative;
+  min-height: 300vh;
+  background: black;
+  overflow: hidden;
+}
+
+.sticky-viewport {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  overflow: visible;
+  z-index: 10;
+  padding: var(--space-md);
+}
+
+.services-track::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: calc(var(--scroll-progress, 0) * 100%);
+  background: linear-gradient(90deg, var(--color-accent), #00ffff);
+  z-index: 9999;
+}

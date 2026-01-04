@@ -1,0 +1,92 @@
+.title-section {
+  position: sticky;
+  top: 0;
+  height: 100rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.title-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+}
+
+.bracket {
+  font-size: clamp(4rem, 12vw, 10rem);
+  font-weight: 200;
+  color: white;
+  font-family: "BPDotsSquare", sans-serif;
+  display: inline-block;
+  will-change: transform;
+
+  --bracket-progress: clamp(0, (var(--scroll-progress, 0) - 0.05) * 10, 1);
+
+  transition: transform 0.1s linear;
+}
+
+.bracket-left {
+  transform: translateX(calc(var(--bracket-progress) * -10px));
+}
+
+.bracket-right {
+  transform: translateX(calc(var(--bracket-progress) * 10px));
+}
+
+.main-title {
+  font-size: clamp(3rem, 10vw, 8rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  color: white;
+  margin: 0;
+  font-family: "BPDotsSquare", sans-serif;
+  overflow: hidden;
+  display: flex;
+  opacity: 1;
+  visibility: visible;
+  white-space: nowrap;
+}
+
+.title-mask {
+  display: inline-flex;
+  overflow: hidden;
+  white-space: nowrap;
+  --text-exist: clamp(0, (var(--scroll-progress, 0) - 0.1) * 10, 1);
+  max-width: calc(var(--text-exist) * 1000px);
+}
+
+.title-char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(50px);
+  filter: blur(10px);
+  will-change: opacity, transform, filter;
+  transition: opacity 0.2s ease-out, transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.2s ease-out;
+  --char-threshold: calc(0.12 + (var(--char-index) * 0.05));
+  --is-visible: clamp(0, (var(--scroll-progress, 0) - var(--char-threshold)) * 50, 1);
+  opacity: var(--is-visible);
+  transform: translateY(calc((1 - var(--is-visible)) * 50px));
+  filter: blur(calc((1 - var(--is-visible)) * 10px));
+}
+
+@media (max-width: 768px) {
+  .title-container {
+    flex-direction: row;
+  }
+
+  .main-title {
+    font-size: clamp(2rem, 12vw, 4rem);
+  }
+
+  .bracket {
+    font-size: clamp(3rem, 10vw, 6rem);
+  }
+}
