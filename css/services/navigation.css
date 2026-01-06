@@ -114,6 +114,25 @@
   opacity: 1;
 }
 
+/* Active states - Desktop (Same as hover) */
+.nav-item:nth-child(1).active ~ .hover-indicator {
+  transform: translateX(0px);
+  width: 120px;
+  opacity: 1;
+}
+
+.nav-item:nth-child(2).active ~ .hover-indicator {
+  transform: translateX(130px);
+  width: 120px;
+  opacity: 1;
+}
+
+.nav-item:nth-child(3).active ~ .hover-indicator {
+  transform: translateX(255px);
+  width: 120px;
+  opacity: 1;
+}
+
 .pill-sun {
   padding: 0.625rem 0.625rem;
   border-radius: 1rem;
@@ -200,32 +219,45 @@
     justify-content: center;
   }
 
-  .nav-item.active ~ .hover-indicator {
-    transform: translateX(0px);
-    width: 80px;
-    opacity: 1;
-  }
-
-  .nav-item.active ~ .hover-indicator {
-    transform: translateX(80px);
-    width: 100px;
-    opacity: 1;
-  }
-
   .hover-indicator {
     position: absolute;
     top: 0.5rem;
     bottom: 0.5rem;
+    left: 0.5rem;
     border-radius: 1rem;
     background: var(--color-accent);
     transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), width 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.2s ease;
     opacity: 1;
-    width: 80px;
-    transform: translateX(130px);
+    width: calc((100% - 2rem) / 3);
+    /* Default position for 1st item (since it's usually active first, or we can hide it initially) */
+    transform: translateX(0);
   }
 
-  .nav-top {
-    left: 50%;
-    transform: translateX(-50%);
+  /* Responsive Hover & Active States */
+  .nav-item:nth-child(1):hover ~ .hover-indicator,
+  .nav-item:nth-child(1).active ~ .hover-indicator {
+    transform: translateX(0);
+    width: calc((100% - 2rem) / 3);
+    opacity: 1;
+  }
+
+  .nav-item:nth-child(2):hover ~ .hover-indicator,
+  .nav-item:nth-child(2).active ~ .hover-indicator {
+    transform: translateX(calc(100% + 0.5rem));
+    width: calc((100% - 2rem) / 3);
+    opacity: 1;
+  }
+
+  .nav-item:nth-child(3):hover ~ .hover-indicator,
+  .nav-item:nth-child(3).active ~ .hover-indicator {
+    transform: translateX(calc(200% + 1rem));
+    width: calc((100% - 2rem) / 3);
+    opacity: 1;
+  }
+
+  .top-2,
+  .top-3,
+  .top-4 {
+    display: none;
   }
 }

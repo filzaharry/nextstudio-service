@@ -27,6 +27,29 @@ export default class ComponentRenderer {
         tags.appendChild(el);
       });
 
+      // Reorder based on position
+      const article = clone.querySelector(".service-card");
+      const sectionImage = clone.querySelector(".section-image");
+      const sectionTitle = clone.querySelector(".section-title");
+      const sectionContent = clone.querySelector(".section-content");
+
+      const sections = [
+        { el: sectionTitle, pos: cardData.title.position },
+        { el: sectionContent, pos: cardData.content.position },
+        { el: sectionImage, pos: cardData.image.position },
+      ];
+
+      const sortedSections = [];
+      sections.forEach((sec) => {
+        if (sec.pos === "left") sortedSections[0] = sec.el;
+        else if (sec.pos === "center") sortedSections[1] = sec.el;
+        else if (sec.pos === "right") sortedSections[2] = sec.el;
+      });
+
+      sortedSections.forEach((el) => {
+        if (el) article.appendChild(el);
+      });
+
       wrapper.appendChild(clone);
     });
   }

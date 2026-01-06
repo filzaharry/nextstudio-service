@@ -113,9 +113,6 @@ body {
   --services-title-size: clamp(3rem, 10vw, 8rem);
   --services-push-distance: clamp(-80px, -10vw, -150px);
   --services-cards-start: -120vh;
-
-  /* Animation Timing */
-  --ease-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 /* Dark Mode (Future-proof) */
